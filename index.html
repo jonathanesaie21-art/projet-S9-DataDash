@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataDash — Le temps en clair</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- ===== EN-TÊTE ===== -->
+      <header class="hero">
+        <div class="logo">
+          <svg
+            class="logo-mark"
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+          >
+            <path
+              d="M2 18 C 8 18, 8 8, 14 8 S 20 18, 26 18"
+              stroke="url(#logoGrad)"
+              stroke-width="3"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <circle cx="22" cy="7" r="3.2" fill="#F4A93B" />
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#3AC6E0" />
+                <stop offset="1" stop-color="#FF6B5B" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="logo-text">Data<span class="accent">Dash</span></span>
+        </div>
+
+        <p class="eyebrow">Votre tableau météo</p>
+        <h1 class="headline">Le temps <span class="accent">en clair.</span></h1>
+        <p class="date" id="currentDate"></p>
+
+        <form class="search-bar" id="searchForm" autocomplete="off">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="text"
+            id="cityInput"
+            placeholder="Quelle ville vous intéresse ?"
+          />
+          <button type="submit" class="search-submit" aria-label="Rechercher">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </button>
+        </form>
+
+        <button class="geo-btn" id="geoBtn">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="3" />
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+          </svg>
+          Ma position
+        </button>
+
+        <p class="error-msg" id="errorMsg"></p>
+      </header>
+
+      <!-- ===== MÉTÉO ACTUELLE ===== -->
+      <main>
+        <section class="card current-card" id="currentCard">
+          <div class="current-top">
+            <div>
+              <p class="eyebrow">Maintenant</p>
+              <p class="location" id="cityName">—</p>
+            </div>
+            <p class="updated-at" id="updatedAt">Mis à jour à l'instant</p>
+          </div>
+
+          <div class="current-visual">
+            <div class="weather-icon" id="weatherIcon"></div>
+            <div class="temp-block">
+              <span class="temp" id="temp">--</span>
+              <span class="temp-unit">°</span>
+            </div>
+          </div>
+          <p class="description" id="description">Chargement…</p>
+
+          <div class="current-stats">
+            <div class="stat">
+              <span class="stat-label">Ressenti</span>
+              <span class="stat-value" id="feelsLike">--°</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Humidité</span>
+              <span class="stat-value" id="humidity">--%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Vent</span>
+              <span class="stat-value" id="wind">-- km/h</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== VILLES RÉCENTES ===== -->
+        <section class="card history-card" id="historyCard">
+          <div class="history-header">
+            <p class="eyebrow">Villes récentes</p>
+            <h2 class="section-title">Vos repères</h2>
+          </div>
+          <ul class="history-list" id="historyList"></ul>
+          <p class="history-empty" id="historyEmpty">
+            Votre historique reste privé, sauvegardé dans ce navigateur.
+          </p>
+          <button class="clear-btn" id="clearHistoryBtn">
+            Effacer les repères
+          </button>
+        </section>
+
+        <!-- ===== PRÉVISIONS 5 JOURS ===== -->
+        <section class="forecast-section">
+          <p class="eyebrow">Tendance à venir</p>
+          <h2 class="section-title">Les 5 prochains jours</h2>
+          <div class="forecast-track" id="forecastTrack"></div>
+        </section>
+      </main>
+
+      <footer>
+        <p class="footer-title">DataDash — Projet 03</p>
+        <p class="footer-tagline">Une météo qui se comprend en un regard.</p>
+      </footer>
+    </div>
+
+    <script src="function.js"></script>
+  </body>
+</html>
